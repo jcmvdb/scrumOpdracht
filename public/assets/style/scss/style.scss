@@ -17,8 +17,57 @@ body {
     background-color: rgba(255, 0, 0, 0.66);
     height: 100vh;
     width: 100vw;
-    form {
+
+    .form {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        .image {
+            margin-top: -202px;
+            margin-bottom: 202px;
+            height: 100px;
+            width: 523px;
+
+        }
+
+        form {
+            background-color: rgba(231, 231, 231, 0.65);
+            height: 418px;
+            width: 516px;
+            left: 702px;
+            top: 351px;
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h1 {
+                font-family: Arial;
+                margin-top: -20px;
+                margin-bottom: 20px;
+            }
+
+            input {
+                height: 71px;
+                width: 440px;
+                left: 738px;
+                top: 448px;
+                border-radius: 12px;
+                margin-top: 15px;
+                margin-bottom: 15px;
+                border: 0;
+                padding: 20px;
+                font-size: 1.2rem;
+
+                &[type="submit"] {
+                    background-color: red;
+                    color: white;
+                }
+            }
+        }
     }
 }
