@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Report;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get("/", function () {
+    return view("login");
+});
+
+
+Route::get('/test', [App\Http\Controllers\reports::class, "report"]);
+Route::get("/test2", function () {
+    return view('report', [
+        "report" => Report::all(),
+    ]);
 });
