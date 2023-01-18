@@ -4,70 +4,151 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: url("https://www.brandweer.nl/wp-content/smush-webp/2021/08/Header-brand-winkelstraat-1600x800.jpg.webp");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+#loginScreenWrapper {
+    background: url("https://www.brandweer.nl/wp-content/smush-webp/2021/08/Header-brand-winkelstraat-1600x800.jpg.webp");
+    background-position: center center;
     background-size: cover;
-    backdrop-filter: blur(8px);
-    //filter: blur(8px);
-}
-
-#wrapperlogin {
-    background-color: rgba(255, 0, 0, 0.66);
+    background-attachment: fixed;
     height: 100vh;
     width: 100vw;
-
-    .form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-
-        .image {
-            margin-top: -202px;
-            margin-bottom: 202px;
-            height: 100px;
-            width: 523px;
-
-        }
-
-        form {
-            background-color: rgba(231, 231, 231, 0.65);
-            height: 418px;
-            width: 516px;
-            left: 702px;
-            top: 351px;
-            border-radius: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            h1 {
-                font-family: Arial;
-                margin-top: -20px;
-                margin-bottom: 20px;
-            }
-
-            input {
-                height: 71px;
-                width: 440px;
-                left: 738px;
-                top: 448px;
-                border-radius: 12px;
-                margin-top: 15px;
-                margin-bottom: 15px;
-                border: 0;
-                padding: 20px;
-                font-size: 1.2rem;
-
-                &[type="submit"] {
-                    background-color: red;
-                    color: white;
-                }
-            }
-        }
-    }
+    //z-index: -1;
 }
+.redblur {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(246, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    position: fixed;
+}
+
+.login {
+    height: 70%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login .loginForm {
+    background-color: rgba(231, 231, 231, 0.65);
+    display: flex;
+    border-radius: 25px;
+    flex-direction: column;
+    text-align: center;
+    width: 516px;
+    max-width: 95%;
+}
+
+.login .loginForm h1 {
+    font-family: Arial;
+    margin-top: 28px;
+}
+
+.login .loginForm form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login .loginForm form input {
+    height: 71px;
+    /*width: 440px;*/
+    width: 85.27%;
+    margin: 15px auto;
+    border-radius: 12px;
+    border: 0;
+    font-size: 1.2rem;
+    padding: 20px;
+}
+
+.login .loginForm form input[type="submit"] {
+    background-color: #f60000;
+    color: white;
+    font-size: 32px;
+}
+
+.login .logo {
+    width: 516px;
+}
+
+.login .logo img {
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    margin-left:auto;
+    margin-right: auto;
+    max-width: 80vw;
+}
+
+//* {
+//    margin: 0;
+//    padding: 0;
+//    box-sizing: border-box;
+//}
+//
+//body {
+//    background-image: url("https://www.brandweer.nl/wp-content/smush-webp/2021/08/Header-brand-winkelstraat-1600x800.jpg.webp");
+//    background-repeat: no-repeat;
+//    background-attachment: fixed;
+//    background-size: cover;
+//    backdrop-filter: blur(8px);
+//    //filter: blur(8px);
+//}
+//
+//#wrapperlogin {
+//    background-color: rgba(255, 0, 0, 0.66);
+//    height: 100vh;
+//    width: 100vw;
+//
+//    .form {
+//        display: flex;
+//        flex-direction: column;
+//        justify-content: center;
+//        align-items: center;
+//        height: 100vh;
+//
+//        .image {
+//            margin-top: -202px;
+//            margin-bottom: 202px;
+//            //width: 523px;
+//            width: 27.19vw;
+//
+//        }
+//
+//        form {
+//            background-color: rgba(231, 231, 231, 0.65);
+//            height: 418px;
+//            width: 516px;
+//            left: 702px;
+//            top: 351px;
+//            border-radius: 25px;
+//            display: flex;
+//            flex-direction: column;
+//            justify-content: center;
+//            align-items: center;
+//
+//            h1 {
+//                font-family: Arial;
+//                margin-top: -20px;
+//                margin-bottom: 20px;
+//            }
+//
+//            input {
+//                height: 71px;
+//                width: 440px;
+//                left: 738px;
+//                top: 448px;
+//                border-radius: 12px;
+//                margin-top: 15px;
+//                margin-bottom: 15px;
+//                border: 0;
+//                padding: 20px;
+//                font-size: 1.2rem;
+//
+//                &[type="submit"] {
+//                    background-color: red;
+//                    color: white;
+//                }
+//            }
+//        }
+//    }
+//}
