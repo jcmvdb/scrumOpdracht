@@ -22,10 +22,13 @@ Route::get("/", function () {
     return view("login");
 });
 
+Route::any("/reports", function () {
+    return view("report");
+});
 
 Route::get('/test', [App\Http\Controllers\reports::class, "report"]);
-Route::get("/test2", function () {
-    return view('report', [
-        "report" => Report::all(),
-    ]);
-});
+//Route::get("/test2", function () {
+//    return view('report', [
+//        "report" => Report::all(),
+//    ]);
+//});

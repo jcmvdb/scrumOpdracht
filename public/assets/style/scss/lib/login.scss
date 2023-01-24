@@ -1,0 +1,71 @@
+#loginScreenWrapper {
+    //background: url("https://www.brandweer.nl/wp-content/smush-webp/2021/08/Header-brand-winkelstraat-1600x800.jpg.webp");
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+    //z-index: -1;
+    .redblur {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(246, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+        position: fixed;
+        .login {
+            height: 70%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            .logo {
+                width: 516px;
+                img {
+                    width: 100%;
+                    margin-top: 2em;
+                    display: flex;
+                    margin-left: auto;
+                    margin-right: auto;
+                    max-width: 80vw;
+                    margin-bottom: 2em;
+                }
+            }
+
+            .loginForm {
+                background-color: rgba(231, 231, 231, 0.65);
+                display: flex;
+                border-radius: 25px;
+                flex-direction: column;
+                text-align: center;
+                width: 516px;
+                max-width: 95%;
+                h1 {
+                    font-family: Arial;
+                    margin-top: 28px;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+
+                    input {
+                        height: 71px;
+                        width: 85.27%;
+                        margin: 15px auto;
+                        border-radius: 12px;
+                        border: 0;
+                        font-size: 1.2rem;
+                        padding: 20px;
+
+                        &[type="submit"] {
+                            background-color: #f60000;
+                            color: white;
+                            font-size: 32px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

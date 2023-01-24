@@ -13,7 +13,8 @@
                 </div>
                 <div class="loginForm">
                     <h1>Log in</h1>
-                    <form>
+                    <form action="/reports" method="post">
+                        @csrf
                         <input type="email" name="email" placeholder="john@doe.com">
                         <input type="password" name="password" placeholder="password">
                         <input type="submit" name="submit" value="Log in">

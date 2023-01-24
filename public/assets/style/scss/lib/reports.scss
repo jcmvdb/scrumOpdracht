@@ -1,0 +1,15 @@
+@import "variable";
+
+#reportWrapper {
+    .heading {
+        background-color: $brandweerrood;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 358px;
+            margin: 15px 0;
+            max-width: 90%;
+        }
+    }
+}
