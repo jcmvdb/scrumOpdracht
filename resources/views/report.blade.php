@@ -7,22 +7,29 @@
 @section("content")
     <div id="reportWrapper">
         <div class="heading">
-            <img src="/assets/img/brantweerj.png">
+            <img src="/assets/img/brandweerLogo.png">
         </div>
         <div class="content">
             <div class="basicInformation">
                 <form>
-                    <input class="report" type="text" name="report" placeholder="melding">
-                    <input type="text" name="location" placeholder="locatie">
-                    <input type="datetime-local" name="beginDate" placeholder="begintijd">
-                    <input type="datetime-local" name="endDate" placeholder="begintijd">
-                    <input list="ovd" name="ovd" placeholder="ovd">
-                    <datalist id="ovd">
-                        <option>ovd 1</option>
-                        <option>ovd 2</option>
-                        <option>ovd 3</option>
-                    </datalist>
+                    <div class="basicInput">
+                        <input type="text" placeholder="Melding" name="report">
+                        <input type="text" placeholder="locatie" name="locatie">
+                        <div class="basicinput-2">
+                            <input type="datetime-local" name="beginTime">
+                            <input type="datetime-local" name="endTime">
+                        </div>
+                        <input type="text" name="ovd" placeholder="ovd">
+                        <div class="basicinput-2">
+                            <input type="text" placeholder="soort melding">
+                            <input type="radio" id="prio1" name="prio1" value="1" checked>
+                            <label for="prio1">1</label>
+                            <input type="radio" id="prio2" name="prio2" value="2">
+                            <label for="prio2">2</label>
+                        </div>
+                    </div>
                 </form>
+
             </div>
         </div>
     </div>

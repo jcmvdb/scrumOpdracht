@@ -60,8 +60,12 @@
                         &[type="submit"] {
                             background-color: #f60000;
                             color: white;
-                            font-size: 32px;
+                            font-size: 26px;
                             cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            line-height: normal;
                         }
                     }
                 }
