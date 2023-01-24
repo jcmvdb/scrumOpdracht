@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield("title") - brandweer IJsselland</title>
     <link href="/assets/style/css/style.css" rel="stylesheet">
+    @vite('resources/css/app.css')
     <link href="/assets/img/logo.png" rel="icon">
 </head>
 <body>
