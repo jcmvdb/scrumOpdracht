@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id("report_id");
             $table->string("report");
+            $table->integer("prio");
+            $table->string("type");
             $table->dateTime("begintime")->nullable();
             $table->dateTime("endTime")->nullable();
             $table->json("vehicles");
