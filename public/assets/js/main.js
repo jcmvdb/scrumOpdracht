@@ -1,8 +1,9 @@
 const randomBackgroundArray = [
-    "https://www.brandweer.nl/wp-content/smush-webp/2021/08/Header-brand-winkelstraat-1600x800.jpg.webp",
-    "https://www.brandweer.nl/wp-content/smush-webp/2021/08/brandweerauto-kopieren-1600x800.jpg.webp",
-    "https://www.brandweer.nl/wp-content/uploads/2021/08/headerfoto-post-Cuijk.jpg",
-    "https://www.brandweer.nl/wp-content/smush-webp/2021/08/Flevoland-Nieuwe-brandweervoertuigen-1-1600x800.jpg.webp",
+    "/assets/img/loginBackground/back1.webp",
+    "/assets/img/loginBackground/back2.webp",
+    "/assets/img/loginBackground/back3.jpg",
+    "/assets/img/loginBackground/back4.webp",
+    "/assets/img/loginBackground/back5.png",
 ];
 
 const random = Math.floor(Math.random() * randomBackgroundArray.length);

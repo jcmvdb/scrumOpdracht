@@ -1,15 +1,28 @@
 @import "variable";
 
-#reportWrapper {
+#wrapper {
     .heading {
         background-color: $brandweerrood;
         display: flex;
         justify-content: center;
         align-items: center;
         img {
-            height: 96px;
+            height: 60px;
             max-width: 90%;
+            margin: 15px 0;
         }
     }
 
+
+    #main {
+        div {
+            height: 500px;
+        }
+        .greenback {
+            background-color: green;
+        }
+        .orangeback {
+            background-color: orange;
+        }
+    }
 }
