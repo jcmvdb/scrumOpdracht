@@ -1,0 +1,311 @@
+@import "variable";
+
+#logWrapper {
+    .heading {
+        background-color: $brandweerrood;
+        height: 101px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+
+        .left-side {
+            display: flex;
+            //justify-content: center;
+            align-items: center;
+            width: 971px;
+            max-width: 60vw;
+
+            a, img {
+                //margin: 10px;
+                padding: 10px;
+            }
+
+            a {
+                color: white;
+                transition: 0.2s all ease-in-out;
+                border-right: 1px solid #AD0000;
+
+                &:last-child {
+                    border: 0;
+                }
+
+                &:hover {
+                    //color: $brandweerblauw;
+                }
+            }
+
+            img {
+                height: 80%;
+            }
+        }
+
+        .right-side {
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            width: 436px;
+            max-width: 30.5vw;
+
+            a {
+                color: #5F5F5F;
+                padding: 17px;
+                border-radius: 6px;
+                background-color: white;
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 30px;
+
+        .log {
+            width: 971px;
+            max-width: 60vw;
+            .melding {
+                width: 100%;
+                background-color: #F9F9F9;
+                box-shadow: 0 3px 8px rgb(100, 100, 100);
+                border-radius: 12px;
+                padding: 10px;
+                margin-bottom: 17px;
+
+                .row {
+                    display: flex;
+
+                    p {
+                        font-size: 24px;
+                        border-radius: 6px;
+                        &:not(:first-child) {
+                            margin-left: 10px;
+                        }
+                    }
+                }
+
+                .firstrow {
+                    p {
+                        font-size: 24px;
+                        min-height: 57px;
+                        display: flex;
+                        &:first-child {
+                            width: 850px;
+                            background-color: #E7E7E7;
+                            padding-left: 10px;
+                            display: flex;
+                            align-items: center;
+                            border-radius: 6px;
+                        }
+                    }
+                    .prio {
+                        width: 85px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 6px;
+                    }
+                    .prio1 {
+                        background-color: #ffd1d1;
+                        border-color: #D30000;
+                        color: #D30000;
+                    }
+                    .prio2 {
+                        background-color: #FFE8AC;
+                        border-color: #D37F00;
+                        color: #D37F00;
+                    }
+                }
+
+                .secondrow, .thirdrow {
+                    p {
+                        width: 467.5px;
+                        background-color: #E7E7E7;
+                        margin-top: 10px;
+                        min-height: 57px;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 10px;
+                    }
+                }
+            }
+
+
+        }
+
+        .search {
+            width: 436px;
+            background-color: #F9F9F9;
+            border-radius: 12px;
+            padding: 10px;
+            //border: 1px solid black;
+            box-shadow: 0 3px 8px rgb(100, 100, 100);
+            max-width: 30.5vw;
+            display: block;
+            height: 100%;
+            container-name: searchbar;
+
+            .searchForm {
+
+                .searchPart {
+                    display: flex;
+                    margin: 12px 0;
+
+                    .left {
+                        width: 25%;
+                        display: flex;
+                        align-items: center;
+                        margin-left: 5px;
+                    }
+
+                    .right {
+                        width: 75%;
+                        display: flex;
+                        justify-content: end;
+                    }
+
+                    .prio-right {
+
+                        .prio1, .prio2 {
+                            //background-color: #d7d7d7;
+                            //color: #6e6e6e;
+                            //border: 3px solid #6e6e6e;
+                            background-color: #E7E7E7;
+                            color: #6e6e6e;
+                            border: 3px solid #6e6e6e;
+                            cursor: pointer;
+                            border-radius: 6px;
+                            font-size: 24px;
+                        }
+
+                        .prio2 {
+                            margin-left: 10px;
+                        }
+
+                        label {
+                            //display: inline-block;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 77px;
+                            height: 57px;
+                            padding: 10px;
+                            border: solid 2px #ccc;
+                            transition: all 0.3s;
+
+                        }
+
+                        .prio1div {
+                            input {
+                                &[type="checkbox"] {
+                                    display: none;
+
+                                    &:checked + label {
+                                        background-color: #ffd1d1;
+                                        border-color: #D30000;
+                                        color: #D30000;
+                                    }
+                                }
+                            }
+                        }
+
+                        .prio2div {
+                            input {
+                                &[type="checkbox"] {
+                                    display: none;
+
+                                    &:checked + label {
+                                        background-color: #FFE8AC;
+                                        border-color: #D37F00;
+                                        color: #D37F00;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .vehicle-right {
+                        display: flex;
+                        flex-wrap: wrap;
+
+                        label {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 85px;
+                            height: 35px;
+                            padding: 10px;
+                            border: solid 2px #6e6e6e;
+                            color: #6e6e6e;
+                            background-color: #E7E7E7;
+                            transition: all 0.3s;
+                            cursor: pointer;
+                            margin: 6px;
+                            border-radius: 6px;
+                        }
+
+                        input {
+
+                            &[type="checkbox"] {
+                                display: none;
+
+                                &:checked + label {
+                                    background-color: #ffd1d1;
+                                    border-color: #D30000;
+                                    color: #D30000;
+                                }
+                            }
+                        }
+                    }
+
+                    .person-right {
+                        input {
+                            font-family: Arial, FontAwesome;
+                            height: 47px;
+                            width: 277px;
+
+                            &::placeholder {
+                                text-align: end;
+                            }
+                        }
+                    }
+
+                    .type-right {
+                        input {
+                            font-family: Arial, FontAwesome;
+                            height: 47px;
+                            width: 277px;
+
+                            &::placeholder {
+                                text-align: end;
+                            }
+                        }
+                    }
+
+                    .date-right {
+
+                    }
+
+
+                }
+            }
+        }
+
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .search {
+        .searchForm {
+            .searchPart {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .right {
+                    justify-content: center !important;
+                }
+            }
+        }
+    }
+}
