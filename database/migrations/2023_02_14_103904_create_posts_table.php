@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('loginusers', function (Blueprint $table) {
-            $table->id("login_id");
-            $table->string("user");
-            $table->string("email");
-            $table->string("password");
+        Schema::create('posts', function (Blueprint $table) {
+            $table->id();
+            $table->string("title");
+            $table->text("description");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loginuser');
+        Schema::dropIfExists('posts');
     }
 };

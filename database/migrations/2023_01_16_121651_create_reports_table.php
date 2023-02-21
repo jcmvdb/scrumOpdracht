@@ -16,11 +16,15 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id("report_id");
             $table->string("report");
-            $table->integer("prio");
-            $table->string("type");
+            $table->string('locatie');
             $table->dateTime("begintime")->nullable();
             $table->dateTime("endTime")->nullable();
+            $table->string("ovd");
+            $table->string("type");
+            $table->integer("prio");
             $table->json("vehicles");
+            $table->longText("comments");
+            $table->json("people_on_station");
             $table->timestamps();
         });
     }
