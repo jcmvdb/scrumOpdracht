@@ -1,0 +1,54 @@
+.heading {
+    background-color: $brandweerrood;
+    height: 101px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    .left-side {
+        display: flex;
+        //justify-content: center;
+        align-items: center;
+        width: 971px;
+        max-width: 60vw;
+
+        a, img {
+            //margin: 10px;
+            padding: 10px;
+        }
+
+        a {
+            color: white;
+            transition: 0.2s all ease-in-out;
+            border-right: 1px solid #AD0000;
+
+            &:last-child {
+                border: 0;
+            }
+
+            &:hover {
+                //color: $brandweerblauw;
+            }
+        }
+
+        img {
+            height: 80%;
+        }
+    }
+
+    .right-side {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        width: 436px;
+        max-width: 30.5vw;
+
+        a {
+            color: #5F5F5F;
+            padding: 17px;
+            border-radius: 6px;
+            background-color: white;
+        }
+    }
+}

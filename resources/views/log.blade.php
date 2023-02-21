@@ -1,83 +1,59 @@
 @extends("layout")
 
-
-<?php
-
-$meld = [
-    "1" => [
-        "melding" => "P 1 BON-03 BR WONING (SCHOORSTEEN) PLUTOLAAN HARDENBERG 042330 042350 042360",
-        "prio" => "1",
-        "type" => "brand",
-        "Locatie" => "Plutolaan Hardenberg"
-    ],
-    "2" => [
-        "melding" => "	P 2 BON-06 BR NACONTROLE N34 34,9 HARDENBERG 042330",
-        "prio" => "1",
-        "type" => "brand",
-        "Locatie" => "NACONTROLE"
-    ],
-    "3" => [
-        "melding" => "P 2 BON-06 ASSISTENTIE AMBULANCE (TIL ASSISTENTIE) NACONTROLE HARDENBERG 042330",
-        "prio" => "1",
-        "type" => "Dier",
-        "Locatie" => "NACONTROLE"
-    ],
-    "4" => [
-        "melding" => "	P 1 BON-01 BR GEZONDHEIDSZORG STICHTING AMBIQ COEVORDERWEG SLAGHAREN 042338 042360",
-        "prio" => "2",
-        "type" => "brand",
-        "Locatie" => "SLAGHAREN"
-    ]
-]
-
-?>
-
-
 @section("title")
     Log
 @endsection
 
 @section("content")
     <div id="logWrapper">
-        <div class="heading">
-            <div class="left-side">
-                <img src="/assets/img/logo.png" alt="Brandweer logo">
-                <a href="#">Dashboard</a>
-                <a href="#">Manschappen</a>
-                <a href="#">Wagen</a>
-            </div>
-            <div class="right-side">
-                <a href="#">Maak melding +</a>
-            </div>
-        </div>
-
         <div class="content">
             <div class="log">
                 <?php
 //                for ($i = 0; $i < 4; $i++) {
-                foreach ($meld as $item) {
-                if ($item["prio"] == "2") {
+                foreach ($Reportlog as $item) {
                     ?>
                 <div class="melding">
                     <div class="firstrow row">
-                        <p class="meldingen"><?= $item["melding"] ?></p>
-                        <p class="prio prio<?= $item["prio"] ?>"><?= $item["prio"] ?></p>
+                        <p class="meldingen"><?= $item->report ?></p>
+                        <p class="prio prio<?= $item->prio ?>"><b><?= $item->prio ?></b></p>
                     </div>
                     <div class="secondrow row">
-                        <p><?= $item["type"] ?></p>
-                        <p><?= $item["Locatie"] ?></p>
+                        <p><?= $item->type ?></p>
+                        <p><?= $item->locatie ?></p>
                     </div>
                     <div class="thirdrow row">
-                        <p>BeginTijd</p>
-                        <p>EindTijd</p>
+                        <p><?= $item->begintime ?></p>
+                        <p><?= $item->endTime ?></p>
                     </div>
                     <div class="buttonRow row">
                         <button>&darr;</button>
                     </div>
+                    <div class="vehicles">
+                            <?php
+                            $vehicleJsonDecode = json_decode($item->vehicles, true);
+                        foreach ($vehicleJsonDecode as $key => $vehicles) {
+                            ?>
+
+                        <div class="vehicle">
+                            <h1><?= $key ?></h1>
+                                <?php
+                                foreach ($vehicles as $person) {
+                                    ?>
+                                    <p><?= $person ?></p>
+                                    <?php
+
+                                }
+                                ?>
+                            <br>
+                        </div>
+                            <?php
+                        }
+                            ?>
+                    </div>
 
                 </div>
-                <?php }
-                } ?>
+                <?php } ?>
+
             </div>
 
 
