@@ -22,19 +22,15 @@ use App\Http\Controllers\VehicleController;
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
-        "users" => FormUsers::all(),
+        "users" => FormUsers::orderby("firstname", "ASC")->get(),
         "vehicles" => Vehicle::all(),
     ]);
 //    [ReportController::class, "index"];
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::post("dashboard", [ReportController::class, "reportsave"]);
 
-Route::get("/log", function () {
-    return view("log",
-        [
-            "Reportlog" => Report::all()
-        ]);
-})->middleware(['auth', 'verified'])->name("log");
+Route::get("/log", [App\Http\Controllers\ReportController::class, "getLog"])->middleware(["auth", "verified"]);
+Route::post("/log", [App\Http\Controllers\ReportController::class, "postLog"])->middleware(["auth", "verified"]);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,21 +38,43 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get("/manschappen", function () {
-    return view("users", [
-        "users" => FormUsers::all(),
-    ]);
-});
-Route::post('/manschappen', [FormUsersController::class, "persoonToevoegen"]);
-Route::post('/updateperson', [FormUsersController::class, "persoonUpdaten"]);
-Route::get('/updateperson', [FormUsersController::class, "index"]);
+
+/**
+ * Users
+ */
+
+Route::any("manschappen", [FormUsersController::class, "index"])->middleware(['auth', 'verified']);
+
+Route::post('/persoontoevoegen', [FormUsersController::class, "persoonToevoegen"])->middleware(['auth', 'verified']);
+Route::get('/persoontoevoegen')->middleware(['auth', 'verified']);
+
+Route::post('/updateperson', [FormUsersController::class, "persoonUpdaten"])->middleware(['auth', 'verified']);
+Route::get('/updateperson')->middleware(['auth', 'verified']);
+
+Route::post('/deleteperson', [FormUsersController::class, "persoonverwijderen"])->middleware(['auth', 'verified']);
+Route::get('/deleteperson', )->middleware(['auth', 'verified']);
+
+
+/**
+ * Voertuigen
+ */
 
 Route::get("/voertuigen", function () {
     return view("vehicle", [
         "vehicles" => Vehicle::all(),
     ]);
-});
-Route::post('/voertuigen', [VehicleController::class, "addVehicle"]);
+})->middleware(['auth', 'verified'])->name('voertuigen');
+
+Route::post("/voertuigtoevoegen", [VehicleController::class, "voertuigtoevoegen"])->middleware(['auth', 'verified']);
+Route::get("/voertuigtoevoegen", [VehicleController::class, "postGet"])->middleware(['auth', 'verified']);
+
+Route::post("/voertuigupdaten", [VehicleController::class, "voertuigUpdaten"])->middleware(['auth', 'verified']);
+Route::get("/voertuigupdaten", [VehicleController::class, "postGet"])->middleware(['auth', 'verified']);
+
+Route::post("/voertuigverwijderen", [VehicleController::class, "voertuigVerwijderen"])->middleware(['auth', 'verified']);
+Route::get("/voertuigverwijderen", [VehicleController::class, "postGet"])->middleware(['auth', 'verified']);
 
 
 require __DIR__ . '/auth.php';
+
+

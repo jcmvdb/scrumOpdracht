@@ -1,0 +1,156 @@
+#usersWrapper {
+    display: flex;
+    margin-top: 50px;
+    justify-content: space-evenly;
+
+    .left, .right {
+        height: 100%;
+        background-color: #f9f9f9;
+        border-radius: 12px;
+        box-shadow: 0 3px 8px rgba(100, 100, 100, 0.70);
+    }
+
+    .left {
+        width: 845px;
+        padding: 20px;
+
+        .users {
+            .user {
+                border-bottom: 1px solid black;
+                display: flex;
+                justify-content: space-between;
+
+                &:hover {
+                    span {
+                        i {
+                            color: #5F5F5F;
+                        }
+                    }
+                }
+                span {
+                    i {
+                        color: transparent;
+                    }
+                }
+
+                p {
+                    font-size: 24px;
+                }
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    i {
+                        font-size: 24px;
+                    }
+                }
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+
+                .overlay {
+                    height: 100%;
+                    backdrop-filter: blur(4px);
+                    width: 0;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: rgb(255, 255, 255);
+                    background-color: rgba(255, 255, 255, 0.9);
+                    overflow-x: hidden;
+                    transition: 0.7s;
+                }
+
+                .overlay-content {
+                    position: relative;
+                    top: 25%;
+                    width: 100%;
+                    text-align: center;
+                    margin-top: 30px;
+                }
+
+                .overlay a {
+                    padding: 8px;
+                    text-decoration: none;
+                    font-size: 36px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+                }
+
+                .overlay-content p {
+                    color: black;
+                }
+
+                .overlay a:hover, .overlay a:focus {
+                    color: #f1f1f1;
+                }
+
+                .overlay .closebtn {
+                    position: absolute;
+                    top: 20px;
+                    right: 45px;
+                    font-size: 60px;
+                }
+
+                .overlay-content {
+                    p {
+                        color: black;
+                    }
+                    .deleteperson {
+                        input {
+                            cursor: pointer;
+                            transition: 0.2s all ease-in-out;
+                            &:hover {
+                                color: $brandweerrood;
+                            }
+                        }
+                    }
+                }
+
+                @media screen and (max-height: 450px) {
+                    .overlay a {
+                        font-size: 20px
+                    }
+                    .overlay .closebtn {
+                        font-size: 40px;
+                        top: 15px;
+                        right: 35px;
+                    }
+                }
+            }
+        }
+    }
+
+    .right {
+        width: 440px;
+        padding: 20px;
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+
+            input {
+                width: 100%;
+                background-color: #E7E7E7;
+                border: 0;
+                border-radius: 6px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            button {
+                border: 2px;
+                width: 288px;
+                height: 57px;
+                background-color: #D30000;
+                border-radius: 6px;
+                color: white;
+                margin-top: 18px;
+            }
+        }
+    }
+}

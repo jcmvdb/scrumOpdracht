@@ -6,28 +6,24 @@
 
 
 @section("content")
-    <?php
-//    echo "<pre>";
-//    foreach ($vehicles as $item) {
-//        var_dump($item->passengers);
-//    }
-//    echo "</pre>";
-    ?>
-
     {{--  list with all the people  --}}
     <datalist id="person">
-        <?php
-        foreach ($users as $item) {
-            echo "<option>$item->firstname - $item->lastname</option>";
-        }
-        ?>
+        @foreach($users as $user)
+            <option value="">{{ $user->firstname }} - {{ $user->lastname }}</option>
+        @endforeach
+//
     </datalist>
 
     <div id="wrapper" class="text-center">
         <div class="">
             @if(session('status'))
-                <div class="alert alert-success">
+                <div class="confirm">
                     {{ session('status') }}
+                </div>
+            @endif
+            @if(session("error"))
+                <div class="error">
+                    {{ session('error') }}
                 </div>
             @endif
             <form name="dashboard" id="dashboard" method="post" action="{{url('dashboard')}}">
@@ -40,7 +36,8 @@
                             </div>
 
                             <div class="inputRow">
-                                <input type="text" name="locatie" placeholder="Adres">
+                                <input type="text" name="locatie" placeholder="Adres"
+                                       value="@if(session('locatie')){{session('locatie')}}@endif">
                             </div>
 
                             <div class="inputRow">
@@ -138,12 +135,11 @@
                         <div class="extraPeople">
                             <a href="javascript:void(0);" class="add_button" title="Add field">+</a>
                             <div class="field_wrapper">
-                                {{--                                <div>--}}
-                                {{--                                </div>--}}
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-
+                        <div class="submitField">
+                            <button type="submit" class="btn btn-primary">Vezend ></button>
+                        </div>
                     </div>
 
                 </div>

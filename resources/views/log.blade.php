@@ -10,7 +10,7 @@
             <div class="log">
                 <?php
 //                for ($i = 0; $i < 4; $i++) {
-                foreach ($Reportlog as $item) {
+                foreach ($Reportlog as $opperKey => $item) {
                     ?>
                 <div class="melding">
                     <div class="firstrow row">
@@ -37,12 +37,11 @@
                         <div class="vehicle">
                             <h1><?= $key ?></h1>
                                 <?php
-                                foreach ($vehicles as $person) {
-                                    ?>
-                                    <p><?= $person ?></p>
-                                    <?php
-
-                                }
+                            foreach ($vehicles as $person) {
+                                ?>
+                            <p><?= $person ?></p>
+                                <?php
+                            }
                                 ?>
                             <br>
                         </div>
@@ -58,18 +57,19 @@
 
 
             <div class="search">
-                <form method="get" class="searchForm">
+                <form method="post" class="searchForm">
+                    @csrf
                     <div class="searchPart">
                         <div class="left">
                             <p>Prioriteit</p>
                         </div>
                         <div class="right prio-right">
                             <div class="prio1div">
-                                <input type="checkbox" id="prio1" name="prio" value="1" checked>
+                                <input type="checkbox" id="prio1" name="prio[]" value="1" checked>
                                 <label class="prio1" for="prio1">1</label>
                             </div>
                             <div class="prio2div">
-                                <input type="checkbox" id="prio2" name="prio" value="2" checked>
+                                <input type="checkbox" id="prio2" name="prio[]" value="2" checked>
                                 <label class="prio2" for="prio2">2</label>
                             </div>
                         </div>
@@ -80,26 +80,16 @@
                             <p>Voertuigen</p>
                         </div>
                         <div class="right vehicle-right">
-                            <input type="checkbox" id="vehicle1" name="2350" value="2350">
-                            <label class="vehicle1" for="vehicle1">2330</label>
-
-                            <input type="checkbox" id="vehicle2" name="2360" value="2360">
-                            <label class="vehicle2" for="vehicle2">2350</label>
-
-                            <input type="checkbox" id="vehicle3" name="2370" value="2370">
-                            <label class="vehicle3" for="vehicle3">2381</label>
-
-                            <input type="checkbox" id="vehicle4" name="2380" value="2380">
-                            <label class="vehicle4" for="vehicle4">2340</label>
-
-                            <input type="checkbox" id="vehicle5" name="2390" value="2390">
-                            <label class="vehicle5" for="vehicle5">2360</label>
-
-                            <input type="checkbox" id="vehicle6" name="2400" value="2400">
-                            <label class="vehicle6" for="vehicle6">2305</label>
-
-                            <input type="checkbox" id="overig" name="overig" value="overig">
-                            <label class="overig" for="overig">overig</label>
+                            <?php
+                                $i = 0;
+                                ?>
+                            @foreach ($testing as $vehicle)
+                                <?php
+                                    $i++;
+                                    ?>
+                                <input type="checkbox" id="vehicle{{$i}}" name="vehicle[]" value="{{ $vehicle->number }}">
+                                <label class="vehicle{{$i}}" for="vehicle{{$i}}">{{ $vehicle->number }}</label>
+                            @endforeach
                         </div>
                     </div>
 
@@ -110,7 +100,7 @@
                         <div class="right person-right">
 
                             <?php
-                            $array = ["henk", "jan zoon", "Jan Pieterzoon Coen", "Jan Jansen", "Inter net", "Par IJs", 'Huub', "Cedric Cervelaat"];
+                            $array = ["x", "jan zoon", "Jan Pieterzoon Coen", "Jan Jansen", "Inter net", "Par IJs", 'Huub', "Cedric Cervelaat"];
                             ?>
                             <input type="text" list="person" placeholder="&#xF002;"/>
                             <datalist id="person">
@@ -148,7 +138,7 @@
                             <p>Type<br>Datum</p>
                         </div>
                         <div class="right date-right">
-                            <input type="date">
+                            <input name="date" type="date">
                         </div>
                     </div>
 

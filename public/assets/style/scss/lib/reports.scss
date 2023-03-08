@@ -1,6 +1,25 @@
 @import "variable";
 
 #wrapper {
+    .confirm, .error {
+        height: 40px;
+        width: 400px;
+        border-radius: 10px;
+        margin: 15px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .confirm {
+        background-color: #00b900;
+        border: 2px solid green;
+    }
+    .error {
+        background-color: #b90000;
+        border: 2px solid #800000;
+        color: white;
+    }
     #dashboard {
         display: flex;
         flex-direction: column;
@@ -296,6 +315,19 @@
                 //display: block;
                 //overflow: auto;
                 height: 100%;
+
+                .submitField {
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: end;
+                    margin-right: 15px;
+                    button {
+                        background-color: #D30000;
+                        color: white;
+                        padding: 12px;
+                        border-radius: 12px;
+                    }
+                }
             }
         }
     }

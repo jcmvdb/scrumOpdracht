@@ -36,6 +36,22 @@ $(document).ready(function(){
     });
 });
 
+function openNav(number) {
+    document.getElementById(`myNav${number}`).style.width = "100%";
+}
+
+function closeNav(number) {
+    document.getElementById(`myNav${number}`).style.width = "0%";
+}
+
+function openNav2(number) {
+    $(`#myNav${number}`).removeClass("hide");
+}
+
+function closeNav2(number) {
+    $(`#myNav${number}`).addClass("hide");
+}
+
 
 
 
