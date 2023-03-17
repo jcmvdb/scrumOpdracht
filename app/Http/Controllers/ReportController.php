@@ -24,20 +24,27 @@ class ReportController extends Controller
 
         /** @var  $vechilesArray */
         $vechilesArray = [];
-        if (isset($request->checkboxname)) {
-            foreach ($request->checkboxname as $_vehicleNumber) {
+        if (isset($request->vehicles)) {
+            foreach ($request->vehicles as $vehicle) {
 
-                foreach ($vehicleModel as $vehicleModelPart) {
-                    if ($vehicleModelPart->number == $_vehicleNumber) {
-                        for ($inputField = 1; $inputField <= $vehicleModelPart->passengers; $inputField++) {
-                            $vechilesArray[$_vehicleNumber][] = $request["inputField" . $_vehicleNumber . "_" . "$inputField"];
+                foreach ($vehicleModel as $vehicleModelItem) {
+                    if ($vehicleModelItem->vehicle_id . "_" . $vehicleModelItem->number === $vehicle) {
+//                        echo "<pre>";
+//                        var_dump($vehicle);
+//                        echo "</pre>";
+                        for ($inputField = 1; $inputField <= $vehicleModelItem->passengers; $inputField++) {
+                            $vechilesArray[$vehicleModelItem->number][] = $request["inputField_" . $vehicle . "_" . "$inputField"];
                         }
                     }
                 }
-            }
-        }
-        $vechilesJson = json_encode($vechilesArray, true);
 
+            }
+
+        } else {
+            return redirect("/dashboard")->with("error", "Selecteer een voertuig!");
+        }
+
+        $vechilesJson = json_encode($vechilesArray, true);
 
         $extraPeopleArray = [];
         if (isset($request->field_name)) {
@@ -88,11 +95,11 @@ class ReportController extends Controller
         } else {
             $report = Report::all()
                 ->whereIn("prio", $request->prio)
-            ->where(function ($query) use ($request) {
-                foreach ($request->vehicle as $key => $value) {
-                    $query->orWhereJsonContains('vehicles', 'like', '%"'.$value.'"%' );
-                }
-            });
+                ->where(function ($query) use ($request) {
+                    foreach ($request->vehicle as $key => $value) {
+                        $query->orWhereJsonContains('vehicles', 'like', '%"' . $value . '"%');
+                    }
+                });
 
             dd($report);
 //            $report = Report::where(function ($query) use ($request) {
@@ -100,7 +107,6 @@ class ReportController extends Controller
 //                    $query->orWhereJsonContains('vehicles->'.$key, 'like', '%"2330"%' );
 //                }
 //            });
-
 
 
         }

@@ -46,13 +46,13 @@ Route::middleware('auth')->group(function () {
 Route::any("manschappen", [FormUsersController::class, "index"])->middleware(['auth', 'verified']);
 
 Route::post('/persoontoevoegen', [FormUsersController::class, "persoonToevoegen"])->middleware(['auth', 'verified']);
-Route::get('/persoontoevoegen')->middleware(['auth', 'verified']);
+Route::get('/persoontoevoegen', [FormUsersController::class, "manschappenGet"])->middleware(['auth', 'verified']);
 
 Route::post('/updateperson', [FormUsersController::class, "persoonUpdaten"])->middleware(['auth', 'verified']);
-Route::get('/updateperson')->middleware(['auth', 'verified']);
+Route::get('/updateperson', [FormUsersController::class, "manschappenGet"])->middleware(['auth', 'verified']);
 
 Route::post('/deleteperson', [FormUsersController::class, "persoonverwijderen"])->middleware(['auth', 'verified']);
-Route::get('/deleteperson', )->middleware(['auth', 'verified']);
+Route::get('/deleteperson', [FormUsersController::class, "manschappenGet"])->middleware(['auth', 'verified']);
 
 
 /**

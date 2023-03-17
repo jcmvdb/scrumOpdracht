@@ -8,9 +8,10 @@
 @section("content")
     {{--  list with all the people  --}}
     <datalist id="person">
-    @foreach($users as $user)
-            <option value="{{ $user->firstname }} - {{ $user->lastname }}">{{ $user->firstname }} - {{ $user->lastname }}</option>
+        @foreach($users as $user)
+            <option value="">{{ $user->firstname }} - {{ $user->lastname }}</option>
         @endforeach
+        //
     </datalist>
 
     <div id="wrapper" class="text-center">
@@ -81,37 +82,46 @@
                         </div>
                         <div class="vehicles">
 
+                            <?php
+                            /**
+                             * Makes the input fields for the vehicles on the amount of people that fit in it (data comes from database)
+                             */
 
-                            {{-- Makes the input fields for the vehicles on the amount of people that fit in it (data comes from database) --}}
-                            @foreach($vehicles as $item)
-                                <div class="vehicle vehicle-2330 hide" id="vehicle-<?= $item->vehicle_id ?>">
-                                    <div class="head"><?= $item->number ?> </div>
-                                    <div class="input">
-                                        @for ($i = 1; $i <= $item->passengers; $i++)
-                                            <input type="text" list="person" placeholder="Manschappen"
-                                                   name="inputField_<?= $item->vehicle_id ?>_<?= $item->number . '_' . $i;?>"
-                                                   class="<?= $item->number . '_' . $i;?>">
-                                        @endfor
-                                    </div>
+                            foreach ($vehicles as $item) {
+                                ?>
+                            <div class="vehicle vehicle-2330 hide" id="vehicle-<?= $item->number ?>">
+                                <div class="head"><?= $item->number ?></div>
+                                <div class="input">
+                                    @for ($i = 1; $i <= $item->passengers; $i++)
+                                        <input type="text" list="person" placeholder="Manschappen"
+                                               name="inputField<?= $item->number . '_' . $i;?>"
+                                               class="<?= $item->number . '_' . $i;?>">
+                                    @endfor
                                 </div>
-                            @endforeach
+                            </div>
+                                <?php
+
+                            }
+                            ?>
 
                         </div>
                     </div>
                     <div class="right">
                         <div class="vehicleSelect">
 
+                            <?php
+                            foreach ($vehicles as $vehcileInput) {
+                                ?>
+                            <input type="checkbox" id="vehicleInput<?= $vehcileInput->number; ?>" name="checkboxname[]"
+                                   value="<?= $vehcileInput->number; ?>">
+                            <label onclick="classHide(<?= $vehcileInput->number ?>)"
+                                   for="vehicleInput<?= $vehcileInput->number; ?>"><img
+                                    src="/assets/img/vehicle/2330.png"
+                                    alt=""><?= $vehcileInput->number; ?></label>
+                                <?php
 
-                            {{-- Here are the selects made in the right side of the website, for selecting which vehicle has been used --}}
-                            @foreach($vehicles as $vehicleInput)
-                                <input type="checkbox" id="vehicleInput<?= $vehicleInput->vehicle_id; ?>"
-                                       name="vehicles[]"
-                                       value="<?= $vehicleInput->vehicle_id; ?>_<?= $vehicleInput->number ?>">
-                                <label onclick="classHide(<?= $vehicleInput->vehicle_id ?>)"
-                                       for="vehicleInput<?= $vehicleInput->vehicle_id; ?>"><img
-                                        src="/assets/img/vehicle/2330.png"
-                                        alt=""><?= $vehicleInput->number; ?></label>
-                            @endforeach
+                            }
+                            ?>
 
                             <input type="checkbox" id="overig" name="overig" value="overig">
                             <label class="overig" for="overig">overig</label>

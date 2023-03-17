@@ -20,18 +20,31 @@ class FormUsersController extends Controller
         }
         return view("users", [
             "users" => FormUsers::orderBy('firstname', $order)
-        ->get(),
+                ->get(),
             "order" => $newOrder,
         ]);
     }
 
+    public function manschappenGet()
+    {
+        return redirect("manschappen");
+    }
+
     public function persoonToevoegen(Request $request)
     {
-        $user = new FormUsers;
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->save();
-        return redirect("manschappen")->with("status", "Persoon toegevoegd");
+
+        if (!isset($request->firstname) || !isset($request->lastname)) {
+            return redirect("manschappen")
+                ->with("error", "Er is iets fout gegaan bij het invullen")
+                ->with("firstname", $request->firstname)
+                ->with("lastname", $request->lastname);
+        } else {
+            $user = new FormUsers;
+            $user->firstname = $request->firstname;
+            $user->lastname = $request->lastname;
+            $user->save();
+            return redirect("manschappen")->with("status", "Persoon toegevoegd");
+        }
     }
 
     public function persoonUpdaten(Request $request)

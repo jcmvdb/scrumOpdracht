@@ -18,12 +18,20 @@ class VehicleController extends Controller
 
     public function voertuigtoevoegen(Request $request)
     {
-        $vehicle = new Vehicle;
-        $vehicle->number = $request->number;
-        $vehicle->type = $request->type;
-        $vehicle->passengers = $request->passengers;
-        $vehicle->save();
-        return redirect("voertuigen")->with("status", "voertuig toegevoegd");
+        if (!isset($request->number) || !isset($request->type) || !isset($request->passengers)) {
+            return redirect("voertuigen")
+                ->with("error", "Niet alles is ingevuld")
+                ->with("number", $request->number)
+                ->with("type", $request->type)
+                ->with("passengers", $request->passengers);
+        } else {
+            $vehicle = new Vehicle;
+            $vehicle->number = $request->number;
+            $vehicle->type = $request->type;
+            $vehicle->passengers = $request->passengers;
+            $vehicle->save();
+            return redirect("voertuigen")->with("status", "voertuig toegevoegd");
+        }
     }
 
     public function voertuigUpdaten(Request $request)
